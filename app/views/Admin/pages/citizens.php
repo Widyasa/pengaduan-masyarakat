@@ -1,15 +1,16 @@
-<div class="container-fluid">
+<div class="container-fluid mt-5">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-        For more information about DataTables, please visit the <a target="_blank"
-                                                                   href="https://datatables.net">official DataTables documentation</a>.</p>
+    <div class="d-flex flex-row justify-content-between mb-3">
+        <h1 class="h3 mb-2 text-gray-800">Citizen Table</h1>
+        <button type="button" class="btn btn-primary add-modal" href="#" data-toggle="modal" data-target="#formModalAdd">Add Data</button>
+    </div>
+
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Citizen Table</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -53,4 +54,33 @@
         </div>
     </div>
 
+</div>
+
+
+<div class="modal fade" id="formModalAdd" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Tambah Siswa</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form action="<?= BASEURL ?>kelas/store" method="post">
+                <div class="modal-body">
+
+                    <div class="input-grup mt-3">
+                        <label for="nama_kelas">nama Kelas</label>
+                        <input type="text" name="nama_kelas" placeholder="input nama" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-secondary"  data-dismiss="modal">Cancel</button>
+                    <button type="submit" value="submit" class="btn btn-primary" >tambah</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
