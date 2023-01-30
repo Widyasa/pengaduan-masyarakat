@@ -10,6 +10,7 @@ class Controller{
 
     public function model($model)
     {
+//        var_dump(file_exists('../app/models/'.$model .'.php'));
         require_once '../app/models/'.$model .'.php';
         return new $model;
     }

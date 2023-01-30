@@ -4,8 +4,12 @@ class Citizens extends Controller{
 
     public function index()
     {
-        $this->view('admin/templates/header');
-        $this->view('admin/pages/citizens');
-        $this->view('admin/templates/footer');
+        $data['title'] = 'Citizens';
+        $data['citizens'] = $this->model('citizenModel')->selectAllcitizens();
+
+        $this->view('admin/templates/header', $data);
+        $this->view('admin/templates/sidebar', $data);
+        $this->view('admin/pages/citizens', $data);
+        $this->view('admin/templates/footer', $data);
     }
 }

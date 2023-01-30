@@ -1,6 +1,6 @@
 <?php
 
-define('BASEURL', 'http:/localhost/pengaduan-masyarakat/public/');
+define('BASEURL', 'http://localhost/pengaduan-masyarakat/public/');
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
