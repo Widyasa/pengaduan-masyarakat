@@ -1,19 +1,20 @@
 <?php
 
 class Database{
-    private $host=DB_HOST;
-    private $user=DB_USER;
-    private $pass=DB_PASS;
-    private $name=DB_NAME;
+    private
+        $host = DB_HOST,
+        $user = DB_USER,
+        $pass = DB_PASS,
+        $name = DB_NAME;
 
-    private $dbh, $stmt;
+    private$stmt, $dbh;
 
     public function __construct()
     {
-        $dsn ="mysql:host={$this->host};mysql:dbname={$this->name}";
+        $dsn = "mysql:host={$this->host};mysql:dbname={$this->name}";
 
         try {
-            $this->dbh = new PDO($dsn, $this->user, $this->pass);
+            $this->dbh =new PDO($dsn, $this->user, $this->pass);
         } catch (PDOException $e){
             die($e->getMessage());
         }
@@ -42,6 +43,7 @@ class Database{
                     break;
             }
         }
+        $this->stmt->bindValue($param, $value, $type);
     }
 
     public function execute()
@@ -51,11 +53,13 @@ class Database{
 
     public function resultAll()
     {
+        $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function resultSingle()
     {
+        $this->execute();
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -63,4 +67,6 @@ class Database{
     {
         return $this->stmt->rowCount();
     }
+
+
 }
