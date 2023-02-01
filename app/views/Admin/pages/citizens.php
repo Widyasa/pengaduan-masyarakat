@@ -44,7 +44,8 @@
                                         <button type="button"  class="btn btn-warning edit-modal" href="#" data-bs-toggle="modal" data-bs-target="#editModal<?=$citizen['citizen_id']?>">
                                             edit
                                         </button>
-                                        <form action="<?=BASEURL?>citizens/delete/<?=$citizen['citizen_id']?>" method="post">
+                                        <form action="<?=BASEURL?>citizens/delete/<?= $citizen['citizen_id'] ?>" method="post">
+                                            <input type="hidden" name="citizen_id" value="<?=$citizen['citizen_id']?>">
                                             <button type="submit" class="btn btn-danger ml-3" onclick="return confirm('yakin mau hapus?')">
                                                 Hapus
                                             </button>

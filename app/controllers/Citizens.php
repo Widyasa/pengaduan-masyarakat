@@ -35,19 +35,13 @@ class Citizens extends Controller{
         }
     }
 
-    public function delete($id=)
+    public function delete()
     {
-        if ($this->model('citizenModel')->deleteCitizen($id)>0){
-            redirect('citizens/');
-        } else{
-            $data['title'] = 'Citizens';
-            $data['citizens'] = $this->model('citizenModel')->selectAllcitizens();
 
-            $this->view('admin/templates/header', $data);
-            $this->view('admin/templates/sidebar', $data);
-            $this->view('admin/pages/citizens', $data);
-            $this->view('admin/templates/footer', $data);
+        if ($this->model('citizenModel')->deleteCitizen($_POST['citizen_id'])){
+            redirect('citizens');
         }
 
     }
+
 }

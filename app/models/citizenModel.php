@@ -31,7 +31,7 @@ class citizenModel{
     }
     public function selectCitizensById($id)
     {
-        $query = "SELECT * FROM {$this->tablecitizens} WHERE `citizen_id` = :citizen_id";
+        $query = "SELECT * FROM db_pengaduan_masyarakat.{$this->tablecitizens} WHERE `citizen_id` = :citizen_id";
         $this->db->query($query);
         $this->db->execute();
         $this->db->resultSingle();
@@ -69,10 +69,12 @@ class citizenModel{
     }
     public function deleteCitizen($id)
     {
-        $query = "DELETE FROM {$this->database}.{$this->tablecitizens} WHERE `citizen_id` = :citizen_id";
+        $query = "DELETE FROM {$this->tablecitizens} WHERE `citizen_id` = :citizen_id AND id_level = 2";
         $this->db->query($query);
         $this->db->bind('citizen_id', $id);
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+
 }
