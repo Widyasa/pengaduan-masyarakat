@@ -34,7 +34,18 @@ class criticModel
 
     public function countUnFeddbackCritic()
     {
-        $query = "SELECT {$this->dbname}.{$this->tablecritics}.`id_critics`, {$this->dbname}.{$this->tablefeedback}.`id_critics`
+        $query = "SELECT {$this->tablecritics}.`id_critics`, {$this->dbname}.{$this->tablefeedback}.`id_critics`
+                FROM {$this->dbname}.{$this->tablecritics} LEFT JOIN {$this->dbname}.{$this->tablefeedback} ON 
+                {$this->dbname}.{$this->tablecritics}.`id_critics` = {$this->dbname}.{$this->tablefeedback}.`id_critics`
+                WHERE {$this->dbname}.{$this->tablefeedback}.`id_critics` IS NULL";
+
+        $this->db->query($query);
+        $this->db->execute();
+        return $this->db->resultAll();
+
+    }  public function countUnFeddbackCritic()
+    {
+        $query = "SELECT {$this->tablecritics}.`id_critics`, {$this->dbname}.{$this->tablefeedback}.`id_critics`
                 FROM {$this->dbname}.{$this->tablecritics} LEFT JOIN {$this->dbname}.{$this->tablefeedback} ON 
                 {$this->dbname}.{$this->tablecritics}.`id_critics` = {$this->dbname}.{$this->tablefeedback}.`id_critics`
                 WHERE {$this->dbname}.{$this->tablefeedback}.`id_critics` IS NULL";

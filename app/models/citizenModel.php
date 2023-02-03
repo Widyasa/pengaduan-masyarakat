@@ -31,7 +31,7 @@ class citizenModel{
     }
     public function selectCitizensById($id)
     {
-        $query = "SELECT * FROM db_pengaduan_masyarakat.{$this->tablecitizens} WHERE `citizen_id` = :citizen_id";
+        $query = "SELECT * FROM db_pengaduan_masyarakat.{$this->tablecitizens} WHERE `id_citizen` = :id_citizen";
         $this->db->query($query);
         $this->db->execute();
         $this->db->resultSingle();
