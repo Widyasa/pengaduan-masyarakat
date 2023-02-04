@@ -41,7 +41,7 @@
                                     <td><?=$citizen['phone_number']?></td>
                                     <td><?=$citizen['address']?></td>
                                     <td class="d-flex flex-row gap-3">
-                                        <button type="button"  class="btn btn-warning edit-modal" href="#" data-bs-toggle="modal" data-bs-target="#editModal<?=$citizen['citizen_id']?>">
+                                        <button type="button"  class="btn btn-warning edit-modal" href="#" data-bs-toggle="modal" data-bs-target="#editModal<?=$citizen['id_citizen']?>">
                                             edit
                                         </button>
                                         <form action="<?=BASEURL?>citizens/delete/<?= $citizen['id_citizen'] ?>" method="post">

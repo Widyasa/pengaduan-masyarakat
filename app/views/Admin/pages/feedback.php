@@ -26,6 +26,7 @@
                                 <th>Critics</th>
                                 <th>Feedback</th>
                                 <th>Date</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
 
@@ -39,6 +40,17 @@
                                     <td><?=$feedback['critic']?></td>
                                     <td><?=$feedback['feedback']?></td>
                                     <td><?=$feedback['date']?></td>
+                                    <td class="d-flex flex-row gap-3">
+                                        <button type="button"  class="btn btn-warning edit-modal" href="#" data-bs-toggle="modal" data-bs-target="#editModal<?=$citizen['id_citizen']?>">
+                                            edit
+                                        </button>
+                                        <form action="<?=BASEURL?>citizens/delete/<?= $citizen['id_citizen'] ?>" method="post">
+                                            <input type="hidden" name="citizen_id" value="<?=$citizen['id_citizen']?>">
+                                            <button type="submit" class="btn btn-danger ml-3" onclick="return confirm('yakin mau hapus?')">
+                                                Hapus
+                                            </button>
+                                        </form>
+                                    </td>
 
                                 </tr>
                             <?php endforeach; ?>

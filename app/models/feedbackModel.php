@@ -54,6 +54,7 @@ class feedbackModel{
         $this->db->query($query);
         return $this->db->resultAll();
     }
+
 }
 
 
