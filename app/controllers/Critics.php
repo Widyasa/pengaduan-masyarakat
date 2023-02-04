@@ -19,12 +19,9 @@ class  Critics extends Controller
 
     public function store()
     {
-//        var_dump($_POST); die();
-        if ($this->model('criticModel')->sendFeedback($_POST)>0)   {
+        if ($this->model('criticModel')->sendFeedback($_POST))   {
            $this->model('criticModel')->updateStatusCritic($_POST['id_critics']);
-            redirect('critics');
-        } else{
-            redirect('critics');
         }
+        redirect('critics');
     }
 }

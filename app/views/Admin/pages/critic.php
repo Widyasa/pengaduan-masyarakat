@@ -38,7 +38,7 @@
                                     <td><?=$critic['critic']?></td>
                                     <td><?=$critic['date']?></td>
                                     <td>
-                                        <button type="button" class="btn text-white addData " data-bs-toggle="modal" data-bs-target="#addModal" data-id="<?=$critic['id_critics']?>"  style="background-color:var(--primary-color);">
+                                        <button type="button" class="btn text-white addData" data-bs-toggle="modal" data-bs-target="#addModal" data-id="<?=$critic['id_critics']?>"  style="background-color:var(--primary-color);">
                                              Feedback
                                         </button>
                                     </td>
@@ -64,7 +64,7 @@
             <div class="modal-body p-5">
                 <p class="fs-3 text-center">Give Feedback</p>
                 <form action="<?=BASEURL?>critics/store" method="post">
-                    <input type="hidden" name="id_critics" id="id-critic">
+                    <input type="hidden" name="id_critics" id="id_critics">
                     <div class="row gy-4 pt-4">
                         <div class="pt-3 col-12 input-modal w-100">
                             <label>Feedback</label>

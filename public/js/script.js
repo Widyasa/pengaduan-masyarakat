@@ -136,11 +136,18 @@ document.addEventListener("click", closeAllSelect);
 let table = new DataTable('#table_id',{});
 
 
-$(function () {
+// $(function () {
+//     $('.addData').on('click', function(){
+//
+//         const id = $(this).data('id');
+//         $('#id_critics').val(id);
+//         // console.log(id);
+//     })
+// })
+$(function(){
     $('.addData').on('click', function(){
 
         const id = $(this).data('id');
-        $('#id-critic').val(id);
-        // console.log(id);
+        $('#id_critics').val(id);
     })
 })

@@ -46,17 +46,16 @@ class criticModel
         return $this->db->resultAll();
 
     }  public function selectUnFeddbackCritic()
-    {
-        $query = "SELECT {$this->tablecritics}.id_critics, {$this->tbcitizen}.name, {$this->tablecritics}.id_citizen, {$this->tablefeedback}.id_critics,
+{
+    $query = "SELECT {$this->tablecritics}.id_critics, {$this->tbcitizen}.name, {$this->tablecritics}.id_citizen,
                   {$this->tablecritics}.critic, {$this->tablecritics}.status,  {$this->tablecritics}.date
-                FROM  {$this->tablecritics} INNER JOIN {$this->tbcitizen} ON {$this->tablecritics}.id_citizen = {$this->tbcitizen}.id_citizen LEFT JOIN {$this->tablefeedback} ON 
-                {$this->tablecritics}.id_critics = {$this->tablefeedback}.id_critics
-                WHERE {$this->tablecritics}.status = '0' ";
+                FROM  {$this->tablecritics} INNER JOIN {$this->tbcitizen} ON {$this->tablecritics}.id_citizen = {$this->tbcitizen}.id_citizen
+                WHERE {$this->tablecritics}.status = '0'";
 
-        $this->db->query($query);
-        $this->db->execute();
-        return $this->db->resultAll();
-    }
+    $this->db->query($query);
+    $this->db->execute();
+    return $this->db->resultAll();
+}
 
 
 
@@ -68,20 +67,21 @@ class criticModel
         $this->db->resultSingle();
     }
 
-    public function selectCriticsByCriticId($id)
-    {
-
-        $query = "SELECT * FROM {$this->tablecritics} WHERE `id_critics` = :id_critics";
-        $this->db->bind('id_critics', $id);
-        $this->db->query($query);
-        return $this->db->resultSingle();
-
-    }
+//    public function selectCriticsByCriticId($id)
+//    {
+//
+//        $query = "SELECT * FROM {$this->tablecritics} WHERE `id_critics` = :id_critics";
+//        $this->db->bind('id_critics', $id);
+//        $this->db->query($query);
+//        return $this->db->resultSingle();
+//
+//    }
 
     public function sendFeedback($data)
     {
+
 //        $criticId = $this->selectCriticsByCriticId();
-        $query = "INSERT INTO {$this->tablefeedback} VALUES (NULL, :status, :id_critics, :feedback, :date )";
+        $query = "INSERT INTO {$this->tablefeedback}  VALUES (null, :status,  :id_critics , :feedback, :date )";
         $this->db->query($query);
         $this->db->bind('status', '1');
         $this->db->bind('id_critics', $data['id_critics']);

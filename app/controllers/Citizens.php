@@ -38,7 +38,7 @@ class Citizens extends Controller{
     public function delete()
     {
 
-        if ($this->model('citizenModel')->deleteCitizen($_POST['citizen_id'])){
+        if ($this->model('citizenModel')->deleteCitizen($_POST['id_citizen'])){
             redirect('citizens');
         }
 

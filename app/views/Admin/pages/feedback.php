@@ -41,11 +41,11 @@
                                     <td><?=$feedback['feedback']?></td>
                                     <td><?=$feedback['date']?></td>
                                     <td class="d-flex flex-row gap-3">
-                                        <button type="button"  class="btn btn-warning edit-modal" href="#" data-bs-toggle="modal" data-bs-target="#editModal<?=$citizen['id_citizen']?>">
-                                            edit
+                                        <button type="button"  class="btn btn-warning edit-modal" href="#" data-bs-toggle="modal" data-bs-target="#editModal<?=$feedback['id_feedback']?>">
+                                            Edit
                                         </button>
-                                        <form action="<?=BASEURL?>citizens/delete/<?= $citizen['id_citizen'] ?>" method="post">
-                                            <input type="hidden" name="citizen_id" value="<?=$citizen['id_citizen']?>">
+                                        <form action="<?=BASEURL?>feedback/delete/<?= $feedback['id_feedback'] ?>" method="post">
+                                            <input type="hidden" name="id_feedback" value="<?=$feedback['id_feedback']?>">
                                             <button type="submit" class="btn btn-danger ml-3" onclick="return confirm('yakin mau hapus?')">
                                                 Hapus
                                             </button>
@@ -131,65 +131,25 @@
     </div>
 </div>
 
-<?php foreach ($data['citizens'] as $citizen) :?>
-    <div class="modal fade" id="editModal<?=$citizen['citizen_id']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php foreach ($data['feedbacks'] as $feedback) :?>
+    <div class="modal fade" id="editModal<?=$feedback['id_feedback']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" >
             <div class="modal-content">
                 <div class="modal-body p-5">
-                    <p class="fs-3 text-center"> Citizen</p>
-                    <form action="<?=BASEURL?>citizens/edit" method="post">
+                    <p class="fs-3 text-center">Edit Feedback</p>
+                    <form action="<?=BASEURL?>feedback/edit" method="post">
                         <div class="row gy-4 pt-4">
-                            <input type="hidden" value="<?=$citizen['citizen_id']?>" name="citizen_id">
-                            <div class="col-6">
-                                <div class="input-modal w-100">
-                                    <label>Name</label>
-                                    <div class="input-text-wrapper w-100 mt-2">
-                                        <input type="text" name="name" class="w-100 border-0" value="<?=$citizen['name']?>" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="input-modal w-100">
-                                    <label>Username</label>
-                                    <div class="input-text-wrapper w-100 mt-2">
-                                        <input type="text" name="username" class="w-100 border-0" value="<?=$citizen['username']?>" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="input-modal w-100">
-                                    <label>Id Number</label>
-                                    <div class="input-text-wrapper w-100 mt-2">
-                                        <input type="text" name="number" class="w-100 border-0" value="<?=$citizen['number']?>" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="input-modal w-100">
-                                    <label>Phone Number</label>
-                                    <div class="input-text-wrapper w-100 mt-2">
-                                        <input type="text" name="phone_number" class="w-100 border-0" value="<?=$citizen['phone_number']?>" >
-                                    </div>
-                                </div>
-                            </div>
-                            <!--                        <div class="col-12">-->
-                            <!--                            <div class="input-modal w-100">-->
-                            <!--                                <label>Password</label>-->
-                            <!--                                <div class="input-text-wrapper w-100 mt-2">-->
-                            <!--                                    <input type="password" name="password" class="w-100 border-0" placeholder="Enter Password" >-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                        </div>-->
+                            <input type="hidden" value="<?=$feedback['id_feedback']?>" name="id_feedback">
                             <div class="pt-3 input-modal w-100">
-                                <label>Address</label>
+                                <label>Feedback</label>
                                 <div class="input-text-wrapper w-100 mt-2">
-                                    <textarea type="text" name="address" class="w-100 input-text-wrapper border-0"><?=$citizen['address']?></textarea>
+                                    <textarea type="text" name="feedback" class="w-100 input-text-wrapper border-0"><?=$feedback['feedback']?></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex flex-row justify-content-center gap-3 pt-4">
                             <button type="reset" class="btn btn-modal-close" data-bs-dismiss="modal">Cancel Save</button>
-                            <button type="submit" class="btn btn-modal-enter">Add Citizens </button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </button>
+                            <button type="submit" class="btn btn-modal-enter">Edit Feedback </button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </button>
                         </div>
                     </form>
                 </div>

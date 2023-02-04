@@ -56,10 +56,10 @@ class citizenModel{
     {
 //        $hash = password_hash($data['password'], PASSWORD_DEFAULT);
 
-        $query = "UPDATE {$this->database}.{$this->tablecitizens} SET  `name`=:name,`number`=:number,`phone_number`=:phone_number,`address`=:address WHERE {$this->database}.{$this->tablecitizens}.citizen_id=:citizen_id" ;
+        $query = "UPDATE {$this->database}.{$this->tablecitizens} SET  `name`=:name,`number`=:number,`phone_number`=:phone_number,`address`=:address WHERE {$this->database}.{$this->tablecitizens}.id_citizen=:id_citizen" ;
 
         $this->db->query($query);
-        $this->db->bind('citizen_id', $data['citizen_id']);
+        $this->db->bind('id_citizen', $data['id_citizen']);
         $this->db->bind('name', $data['name']);
         $this->db->bind('number', $data['number']);
         $this->db->bind('phone_number', $data['phone_number']);
@@ -69,9 +69,9 @@ class citizenModel{
     }
     public function deleteCitizen($id)
     {
-        $query = "DELETE FROM {$this->tablecitizens} WHERE `citizen_id` = :citizen_id AND id_level = 2";
+        $query = "DELETE FROM {$this->tablecitizens} WHERE `id_citizen` = :id_citizen AND id_level = 2";
         $this->db->query($query);
-        $this->db->bind('citizen_id', $id);
+        $this->db->bind('is_citizen', $id);
         $this->db->execute();
         return $this->db->rowCount();
     }

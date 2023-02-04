@@ -43,16 +43,42 @@ class feedbackModel{
     {
         $query = "SELECT {$this->tablefeedback}.id_feedback, {$this->tablefeedback}.date, {$this->tbcitizen}.name, {$this->tbcritics}.critic, {$this->tablefeedback}.feedback,
                  {$this->tbcritics}.id_critics, 
-                 {$this->tbcitizen}.id_citizen FROM 
-                 (({$this->tablefeedback}  INNER JOIN 
+                 {$this->tbcitizen}.id_citizen, {$this->tbcritics}.status, {$this->feedback}.status, FROM 
+                 ((({$this->tablefeedback}  INNER JOIN 
                   {$this->tbcritics} ON 
                   {$this->tablefeedback}.id_critics = 
                   {$this->tbcritics}.id_critics)
                   INNER JOIN {$this->tbcitizen} ON 
                   {$this->tbcitizen}.id_citizen
-                  = {$this->tbcritics}.id_citizen)";
+                  = {$this->tbcritics}.id_citizen) INNER JOIN {$this->tbcritics}.status ON {$this->tablefeedback} WHERE {$this->tbcritics}.status='1'";
         $this->db->query($query);
         return $this->db->resultAll();
+    }
+
+    public function editFeedback($data)
+    {
+        $query = "UPDATE {$this->tablefeedback} SET `feedback`=:feedback WHERE `id_feedback`=:id_feedback";
+        $this->db->query($query);
+        $this->db->bind('id_feedback', $data['id_feedback']);
+        $this->db->bind('feedback', $data['feedback']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+    public function deleteFeedback($id)
+    {
+        $query = "DELETE FROM {$this->tablefeedback} WHERE `id_feedback`=:id_feedback";
+        $this->db->query($query);
+        $this->db->bind('id_feedback',$id);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+    public function editStatusFeedback($id)
+    {
+        $query = "UPDATE {$this->tablefeedback} SET `status`= '0' WHERE `id_feedback`=:id_feedback";
+        $this->db->query($query);
+        $this->db->bind('id_feedback',$id);
+        $this->db->execute();
+        return $this->db->rowCount();
     }
 
 }

@@ -11,4 +11,24 @@ class Feedback extends Controller
         $this->view('admin/pages/feedback', $data);
         $this->view('admin/templates/footer', $data);
     }
+
+    public function edit()
+    {
+        if ($this->model('feedbackModel')->editFeedback($_POST)){
+            redirect('feedback');
+        } else{
+            redirect('feedback');
+        }
+    }
+
+    public function delete()
+    {
+        if ($this->model('feedbackModel')->deleteFeedback($_POST['id_feedback']))
+        {
+            $this->model('feedbackModel')->editStatusFeedback($_POST['id_feedback']);
+            redirect('feedback');
+        } else{
+            redirect('feedback');
+        }
+    }
 }
