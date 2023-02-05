@@ -23,9 +23,9 @@ class Feedback extends Controller
 
     public function delete()
     {
-        if ($this->model('feedbackModel')->deleteFeedback($_POST['id_feedback']))
+        if ($this->model('feedbackModel')->editStatusFeedback($_POST['id_feedback']))
         {
-            $this->model('feedbackModel')->editStatusFeedback($_POST['id_feedback']);
+            $this->model('feedbackModel')->deleteFeedback($_POST['id_feedback']);
             redirect('feedback');
         } else{
             redirect('feedback');

@@ -6,6 +6,7 @@ class feedbackModel{
     private $tbcitizen = 'tb_citizen';
     private $tbcritics = 'tb_critics';
     private $tablelevel = 'tb_level';
+    private $tbstatus = 'status';
 
     private $db;
 
@@ -45,7 +46,7 @@ class feedbackModel{
                   .date, {$this->tbcitizen}.name, {$this->tbcritics}.critic, 
                  {$this->tablefeedback}.feedback,
                  {$this->tbcritics}.id_critics, 
-                 {$this->tbcitizen}.id_citizen, {$this->tbcritics}.status, {$this->tablefeedback}.status FROM 
+                 {$this->tbcitizen}.id_citizen, {$this->tablefeedback}.status FROM 
                  (({$this->tablefeedback}  INNER JOIN 
                   {$this->tbcritics} ON 
                   {$this->tablefeedback}.id_critics = 
@@ -77,9 +78,9 @@ class feedbackModel{
     }
     public function editStatusFeedback($id)
     {
-        $query = "UPDATE {$this->tbcritics} INNER JOIN {$this->tablefeedback} ON {$this->tbcritics}.id_critics = {$this->tablefeedback}.id_critics SET {$this->tbcritics}.status = '1', {$this->tablefeedback}.status='1' WHERE {$this->tablefeedback}.id_feedback=:id_feedback";
+        $query = "UPDATE {$this->tbcritics} INNER JOIN {$this->tablefeedback}
+                   ON {$this->tablefeedback}.status = {$this->tbcritics}.status SET {$this->tbcritics}.status='0' WHERE {$this->tablefeedback}.id_feedback=:id_feedback ";
         $this->db->query($query);
-        $this->db->bind('status', '1');
         $this->db->bind('id_feedback',$id);
         $this->db->execute();
         return $this->db->rowCount();

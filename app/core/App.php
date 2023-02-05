@@ -1,6 +1,6 @@
 <?php
  class App{
-     private $controller = 'Dashboard';
+     private $controller = 'Auth';
      private $method = 'index';
      private $params = [];
      public function __construct()

@@ -7,6 +7,7 @@ class criticModel
     private $tablefeedback= 'tb_feedback';
 
     private $tbcitizen= 'tb_citizen';
+//    private $tbstatus = 'status';
     private $dbname = 'db_pengaduan_masyarakat';
     private $tablelevel = 'tb_level';
 
@@ -49,8 +50,8 @@ class criticModel
 {
     $query = "SELECT {$this->tablecritics}.id_critics, {$this->tbcitizen}.name, {$this->tablecritics}.id_citizen,
                   {$this->tablecritics}.critic, {$this->tablecritics}.status,  {$this->tablecritics}.date
-                FROM  {$this->tablecritics} INNER JOIN {$this->tbcitizen} ON {$this->tablecritics}.id_citizen = {$this->tbcitizen}.id_citizen
-                WHERE {$this->tablecritics}.status = '0'";
+                FROM {$this->tablecritics} INNER JOIN {$this->tbcitizen} ON {$this->tablecritics}.id_citizen = {$this->tbcitizen}.id_citizen
+                WHERE {$this->tablecritics}.status = '0' ";
 
     $this->db->query($query);
     $this->db->execute();
@@ -81,9 +82,8 @@ class criticModel
     {
 
 //        $criticId = $this->selectCriticsByCriticId();
-        $query = "INSERT INTO {$this->tablefeedback}  VALUES (null, :status,  :id_critics , :feedback, :date )";
+        $query = "INSERT INTO {$this->tablefeedback}  VALUES (null, '1',  :id_critics , :feedback, :date )";
         $this->db->query($query);
-        $this->db->bind('status', '1');
         $this->db->bind('id_critics', $data['id_critics']);
         $this->db->bind('feedback', $data['feedback']);
         $this->db->bind('date', date("Y-m-d"));
@@ -93,7 +93,7 @@ class criticModel
 
     public function updateStatusCritic($id)
     {
-        $query = "UPDATE {$this->tablecritics} SET `status`='1' WHERE {$this->tablecritics}.id_critics = :id_critics";
+        $query = "UPDATE {$this->tablecritics} SET `status`='1' WHERE `id_critics` = :id_critics";
         $this->db->query($query);
         $this->db->bind('id_critics', $id);
         $this->db->execute();
