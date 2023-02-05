@@ -1,1 +1,2 @@
-<h1><?=$_SESSION['name']?></h1>
+
+<h1 style="font-size"><?=$_SESSION['name']?></h1>

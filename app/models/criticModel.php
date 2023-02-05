@@ -34,6 +34,13 @@ class criticModel
         $this->db->execute();
         return $this->db->resultAll();
     }
+    public function countCriticsById()
+    {
+        $query = "SELECT * FROM db_pengaduan_masyarakat.{$this->tablecritics} where `id_critics`= '".$_SESSION['id_citizen']."'";
+        $this->db->query($query);
+        $this->db->execute();
+        return $this->db->resultAll();
+    }
 
     public function countUnFeddbackCritic()
     {

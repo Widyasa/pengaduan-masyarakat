@@ -9,11 +9,11 @@ class Dashboard extends Controller{
         }
     }
     public function index()
-
     {
         $data['title'] = 'Dashboard';
         $data['countCitizen'] = count($this->model('citizenModel')->countCitizen());
         $data['countCritics'] = count($this->model('criticModel')->countCritics());
+        $data['countCriticsById'] = count($this->model('criticModel')->countCriticsById());
         $data['countFeedback'] = count($this->model('feedbackModel')->countFeedback());
         $data['countUnFeedbackCritic'] = count($this->model('criticModel')->countUnFeddbackCritic());
         $this->view('templates/header', $data);
@@ -26,8 +26,5 @@ class Dashboard extends Controller{
 
 
 
-    public function citizen()
-    {
-        $this->view('citizen/pages/dashboard');
-    }
+
 }
