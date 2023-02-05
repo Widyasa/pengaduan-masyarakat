@@ -14,7 +14,6 @@
     <title><?=$data['title']?> Page</title>
 </head>
 <body class="container ">
-
 <div class="row row-login d-flex  justify-content-center mt-lg-4 pt-lg-5">
     <div class="col-lg-6 col-md-6 col-8  d-lg-flex d-md-flex align-items-center d-none ">
         <img src="<?=BASEURL?>/img/auth/login.svg" class="img-fluid img-login" alt="">
@@ -23,24 +22,27 @@
         <div class="card card-login border-0">
             <div class="card-body">
                 <div class="fs-3 fw-semibold main-color text-center">Welcome Back to PemMas Website</div>
-                <div class="input-wrapper pt-2 w-100">
-                    <div class=" input-gmail w-100">
-                        <label>Username</label>
-                        <div class="input-text-wrapper w-100 mt-2">
-                            <input type="text" name="gmail" class="w-100 border-0" placeholder="Enter your gmail" >
+                <form action="<?=BASEURL?>auth/login" method="post">
+                    <div class="input-wrapper pt-2 w-100">
+                        <div class=" input-gmail w-100">
+                            <label>Username</label>
+                            <div class="input-text-wrapper w-100 mt-2">
+                                <input type="text" name="username" class="w-100 border-0" placeholder="Enter your username" >
+                            </div>
+                        </div>
+                        <div class="pt-3 input-password w-100">
+                            <label>Password</label>
+                            <div class="input-text-wrapper w-100 mt-2">
+                                <input type="password" name="password" class="w-100 border-0" placeholder="Enter your Password" >
+                            </div>
                         </div>
                     </div>
-                    <div class="pt-3 input-password w-100">
-                        <label>Password</label>
-                        <div class="input-text-wrapper w-100 mt-2">
-                            <input type="password" name="gmail" class="w-100 border-0" placeholder="Enter your Password" >
-                        </div>
-                    </div>
-                </div>
 
-                <div class="pt-4">
-                    <a href="{{route('dashboard')}}" class="text-decoration-none btn-login btn-color w-100 p-3 login-text text-center d-flex justify-content-center ">Login</a>
-                </div>
+                    <div class="pt-4">
+                        <button type="submit" value="login" class="text-decoration-none  btn-login w-100 p-3 login-text text-center d-flex justify-content-center ">Login</button>
+                    </div>
+                </form>
+
                 <div class="text-center pt-4">Don't Have Account? <span class="main-color"><a href="{{route('register')}}" class="text-decoration-none main-color">Sign Up</a></span> </div>
             </div>
         </div>

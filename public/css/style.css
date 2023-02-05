@@ -187,15 +187,15 @@ body{
 }
 
 .btn-login{
-    background-color: var(--primary-color);
-    border-radius: 5px;
-    margin-top: 30px;
-    border:2px solid transparent;
-    transition: 0.3s;
+    background-color: var(--primary-color) !important;
+    border-radius: 5px !important;
+    margin-top: 30px !important;
+    border:2px solid transparent !important;
+    transition: 0.3s !important;
 }
 .btn-login:hover{
-    border-color: var(--primary-color);
-    background-color: transparent;
+    border-color: var(--primary-color) !important;
+    background-color: transparent !important;
 }
 .login-text{
     color: white;

@@ -2,6 +2,12 @@
 
 class Dashboard extends Controller{
 
+    public function __construct()
+    {
+        if (empty($_SESSION['id']) AND empty($_SESSION['id_citizen'])){
+            redirect('auth/');
+        }
+    }
     public function index()
     {
         $data['title'] = 'Dashboard';
@@ -13,5 +19,10 @@ class Dashboard extends Controller{
         $this->view('templates/sidebar', $data);
         $this->view('admin/pages/dashboard', $data);
         $this->view('templates/footer', $data);
+    }
+
+    public function citizen()
+    {
+        $this->view('citizen/pages/dashboard');
     }
 }

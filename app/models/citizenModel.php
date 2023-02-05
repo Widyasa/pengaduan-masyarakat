@@ -34,7 +34,15 @@ class citizenModel{
         $query = "SELECT * FROM db_pengaduan_masyarakat.{$this->tablecitizens} WHERE `id_citizen` = :id_citizen";
         $this->db->query($query);
         $this->db->execute();
-        $this->db->resultSingle();
+        return $this->db->resultSingle();
+    }
+    public function selectCitizensByUsername($username)
+    {
+        $query = "SELECT * FROM db_pengaduan_masyarakat.{$this->tablecitizens} WHERE `username` = :username";
+        $this->db->query($query);
+        $this->db->bind('username', $username);
+        $this->db->execute();
+        return $this->db->resultSingle();
     }
 
     public function addCitizen($data)
