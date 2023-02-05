@@ -53,7 +53,20 @@ class criticModel
         $this->db->execute();
         return $this->db->resultAll();
 
-    }  public function selectUnFeddbackCritic()
+    }
+    public function countUnFeedbackCriticById()
+    {
+        $query = "SELECT {$this->tablecritics}.`id_critics`, {$this->dbname}.{$this->tablefeedback}.`id_critics`
+                FROM {$this->dbname}.{$this->tablecritics} LEFT JOIN {$this->dbname}.{$this->tablefeedback} ON 
+                {$this->dbname}.{$this->tablecritics}.`id_critics` = {$this->dbname}.{$this->tablefeedback}.`id_critics`
+                WHERE {$this->dbname}.{$this->tablefeedback}.`id_critics` IS NULL AND {$this->tablecritics}.id_critics = '".$_SESSION['id_citizen']."'";
+
+        $this->db->query($query);
+        $this->db->execute();
+        return $this->db->resultAll();
+
+    }
+    public function selectUnFeddbackCritic()
 {
     $query = "SELECT {$this->tablecritics}.id_critics, {$this->tbcitizen}.name, {$this->tablecritics}.id_citizen,
                   {$this->tablecritics}.critic, {$this->tablecritics}.status,  {$this->tablecritics}.date

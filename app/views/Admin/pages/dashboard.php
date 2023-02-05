@@ -43,7 +43,7 @@
                             <div class="card-body card-dashboard-content d-flex flex-row justify-content-between">
                                 <div class="card-dashboard-name d-flex flex-column p-2">
                                     <p class="card-dashboard-desc ">Total Feedback</p>
-                                    <p class="card-dashboard-value fs-3 fw-bold "><?=$data['countFeedback']?> <span class="fs-6">Critics</span></p>
+                                    <p class="card-dashboard-value fs-3 fw-bold "><?php if ($_SESSION['id_level']===1){echo $data['countFeedback'];} else{ echo $data['countFeedbackById'];} ?>  <span class="fs-6">Critics</span></p>
                                 </div>
                                 <div class="img-card-dashboard-wrapper">
                                     <img src="{{asset('img/dashboard/total-income.svg')}}" class="img-fluid" alt="">
@@ -56,7 +56,7 @@
                             <div class="card-body card-dashboard-content d-flex flex-row justify-content-between">
                                 <div class="card-dashboard-name d-flex flex-column p-2">
                                     <p class="card-dashboard-desc ">Unfeedback Critics</p>
-                                    <p class="card-dashboard-value fs-3 fw-bold "><?=$data['countUnFeedbackCritic']?> <span class="fs-6">Critics</span></p>
+                                    <p class="card-dashboard-value fs-3 fw-bold "><?php if ($_SESSION['id_level']===1){echo $data['countUnFeedbackCriticById'];} else{ echo $data['countUnFeedbackCriticById'];} ?>   <span class="fs-6">Critics</span></p>
                                 </div>
                                 <div class="img-card-dashboard-wrapper">
                                     <img src="{{asset('img/dashboard/total-target.svg')}}" class="img-fluid" alt="">

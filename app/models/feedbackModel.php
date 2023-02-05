@@ -34,10 +34,17 @@ class feedbackModel{
 
     public function selectFeedbackById($id)
     {
-        $query = "SELECT * FROM {$this->tablefeedback} WHERE `feedback_id` = :feedback_id";
+        $query = "SELECT * FROM {$this->tablefeedback} WHERE `id_feedback` = :feedback_id";
         $this->db->query($query);
         $this->db->execute();
         return $this->db->resultSingle();
+    }
+    public function countFeedbackById()
+    {
+        $query = "SELECT * FROM {$this->tablefeedback} WHERE `id_feedback` = '".$_SESSION['id_citizen']."'";
+        $this->db->query($query);
+        $this->db->execute();
+        return $this->db->resultAll();
     }
 
     public function viewCriticSender()
