@@ -6,10 +6,10 @@ class Feedback extends Controller
     {
         $data['title'] = 'Feedback';
         $data['feedbacks'] = $this->model('feedbackModel')->viewCriticSender();
-        $this->view('admin/templates/header', $data);
-        $this->view('admin/templates/sidebar', $data);
+        $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
         $this->view('admin/pages/feedback', $data);
-        $this->view('admin/templates/footer', $data);
+        $this->view('templates/footer', $data);
     }
 
     public function edit()

@@ -3,12 +3,6 @@
         <div class="content-section pt-5 px-4">
             <div class="topbar-content d-flex flex-row justify-content-between">
                 <p class="fs-2 fw-semibold">Dashboard Page</p>
-                <div class="search-input-wrapper d-lg-flex d-none flex-row gap-2">
-                    <div class="d-flex search-icon-wrapper ps-3 bg-white h-100">
-                        <i class="align-self-center fa-solid fs-14 fa-magnifying-glass grey-color"></i>
-                    </div>
-                    <input class="border-0 me-2 py-3 form-search"  type="search" placeholder="Search Activity" id="searchTransport" aria-label="Search">
-                </div>
                 <div class="d-lg-none hamburger-wrapper d-flex text-white align-self-center">
                     <i class="fa-solid fa-bars"></i>
                 </div>

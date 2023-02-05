@@ -41,16 +41,19 @@ class feedbackModel{
 
     public function viewCriticSender()
     {
-        $query = "SELECT {$this->tablefeedback}.id_feedback, {$this->tablefeedback}.date, {$this->tbcitizen}.name, {$this->tbcritics}.critic, {$this->tablefeedback}.feedback,
+        $query = "SELECT {$this->tablefeedback}.id_feedback, {$this->tablefeedback}
+                  .date, {$this->tbcitizen}.name, {$this->tbcritics}.critic, 
+                 {$this->tablefeedback}.feedback,
                  {$this->tbcritics}.id_critics, 
-                 {$this->tbcitizen}.id_citizen, {$this->tbcritics}.status, {$this->feedback}.status, FROM 
-                 ((({$this->tablefeedback}  INNER JOIN 
+                 {$this->tbcitizen}.id_citizen, {$this->tbcritics}.status, {$this->tablefeedback}.status FROM 
+                 (({$this->tablefeedback}  INNER JOIN 
                   {$this->tbcritics} ON 
                   {$this->tablefeedback}.id_critics = 
                   {$this->tbcritics}.id_critics)
                   INNER JOIN {$this->tbcitizen} ON 
                   {$this->tbcitizen}.id_citizen
-                  = {$this->tbcritics}.id_citizen) INNER JOIN {$this->tbcritics}.status ON {$this->tablefeedback} WHERE {$this->tbcritics}.status='1'";
+                  = {$this->tbcritics}.id_citizen)  
+                 WHERE {$this->tablefeedback}.status='1'";
         $this->db->query($query);
         return $this->db->resultAll();
     }
@@ -74,11 +77,17 @@ class feedbackModel{
     }
     public function editStatusFeedback($id)
     {
-        $query = "UPDATE {$this->tablefeedback} SET `status`= '0' WHERE `id_feedback`=:id_feedback";
+        $query = "UPDATE {$this->tbcritics} INNER JOIN {$this->tablefeedback} ON {$this->tbcritics}.id_critics = {$this->tablefeedback}.id_critics SET {$this->tbcritics}.status = '1', {$this->tablefeedback}.status='1' WHERE {$this->tablefeedback}.id_feedback=:id_feedback";
         $this->db->query($query);
+        $this->db->bind('status', '1');
         $this->db->bind('id_feedback',$id);
         $this->db->execute();
         return $this->db->rowCount();
+    }
+
+    public function editStatus()
+    {
+
     }
 
 }

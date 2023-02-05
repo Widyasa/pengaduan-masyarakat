@@ -7,10 +7,10 @@ class Citizens extends Controller{
         $data['title'] = 'Citizens';
         $data['citizens'] = $this->model('citizenModel')->selectAllcitizens();
 
-        $this->view('admin/templates/header', $data);
-        $this->view('admin/templates/sidebar', $data);
+        $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
         $this->view('admin/pages/citizens', $data);
-        $this->view('admin/templates/footer', $data);
+        $this->view('templates/footer', $data);
     }
 
     public function store()
@@ -25,13 +25,7 @@ class Citizens extends Controller{
         if($this->model('citizenModel')->editCitizen($_POST)){
             redirect('citizens');
         } else{
-            $data['title'] = 'Citizens';
-            $data['citizens'] = $this->model('citizenModel')->selectAllcitizens();
-
-            $this->view('admin/templates/header', $data);
-            $this->view('admin/templates/sidebar', $data);
-            $this->view('admin/pages/citizens', $data);
-            $this->view('admin/templates/footer', $data);
+           redirect('citizens');
         }
     }
 

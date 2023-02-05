@@ -11,10 +11,10 @@ class  Critics extends Controller
 //        var_dump($this->model('criticModel')->sendFeedback($data)); die;
         $data['title'] = 'Critics';
         $data['critics'] = $this->model('criticModel')->selectUnFeddbackCritic();
-        $this->view('admin/templates/header', $data);
-        $this->view('admin/templates/sidebar', $data);
+        $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
         $this->view('admin/pages/critic', $data);
-        $this->view('admin/templates/footer', $data);
+        $this->view('templates/footer', $data);
     }
 
     public function store()
