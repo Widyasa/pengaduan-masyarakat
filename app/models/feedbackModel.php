@@ -66,6 +66,25 @@ class feedbackModel{
         return $this->db->resultAll();
     }
 
+    public function viewCriticSenderById()
+    {
+        $query = "SELECT {$this->tablefeedback}.id_feedback, {$this->tablefeedback}
+                  .date, {$this->tbcitizen}.name, {$this->tbcritics}.critic, 
+                 {$this->tablefeedback}.feedback,
+                 {$this->tbcritics}.id_critics, 
+                 {$this->tbcitizen}.id_citizen, {$this->tablefeedback}.status, {$this->tbcritics}.id_citizen FROM 
+                 (({$this->tablefeedback}  INNER JOIN 
+                  {$this->tbcritics} ON 
+                  {$this->tablefeedback}.id_critics = 
+                  {$this->tbcritics}.id_critics)
+                  INNER JOIN {$this->tbcitizen} ON 
+                  {$this->tbcitizen}.id_citizen
+                  = {$this->tbcritics}.id_citizen)  
+                 WHERE {$this->tablefeedback}.status='1' AND {$this->tbcritics}.id_citizen = '".$_SESSION['id_citizen']."'";
+        $this->db->query($query);
+        return $this->db->resultAll();
+    }
+
     public function editFeedback($data)
     {
         $query = "UPDATE {$this->tablefeedback} SET `feedback`=:feedback WHERE `id_feedback`=:id_feedback";

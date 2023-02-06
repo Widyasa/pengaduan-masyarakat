@@ -12,6 +12,10 @@ class Feedback extends Controller
     {
         $data['title'] = 'Feedback';
         $data['feedbacks'] = $this->model('feedbackModel')->viewCriticSender();
+
+        if (isset($_SESSION['id_citizen'])){
+            $data['feedbacksId'] = $this->model('feedbackModel')->viewCriticSenderById();
+        }
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('admin/pages/feedback', $data);

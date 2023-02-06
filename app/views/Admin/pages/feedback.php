@@ -19,6 +19,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table " id="dataTable" width="100%" cellspacing="0">
+                            <?php if ($_SESSION['id_level']===1) { ?>
                             <thead>
                             <tr>
                                 <th>No</th>
@@ -55,6 +56,30 @@
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
+                            <?php } else {?>
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Critics</th>
+                                <th>Feedback</th>
+                                <th>Date</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <?php $i=1;?>
+                            <?php foreach( $data['feedbacksId'] as $feedback) :?>
+
+                                <tr>
+                                    <td><?=$i++?></td>
+                                    <td><?=$feedback['critic']?></td>
+                                    <td><?=$feedback['feedback']?></td>
+                                    <td><?=$feedback['date']?></td>
+
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                            <?php }?>
                         </table>
                     </div>
                 </div>
