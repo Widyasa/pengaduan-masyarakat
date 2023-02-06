@@ -2,6 +2,12 @@
 
 class Feedback extends Controller
 {
+    public function __construct()
+    {
+        if (empty($_SESSION['id']) && empty($_SESSION['id_citizen'])){
+            redirect('auth/');
+        }
+    }
     public function index()
     {
         $data['title'] = 'Feedback';

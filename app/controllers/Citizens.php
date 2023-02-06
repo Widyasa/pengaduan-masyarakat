@@ -2,15 +2,24 @@
 
 class Citizens extends Controller{
 
+    public function __construct()
+    {
+        if (empty($_SESSION['id']) && empty($_SESSION['id_citizen'])){
+            redirect('auth/');
+        }
+    }
     public function index()
     {
-        $data['title'] = 'Citizens';
-        $data['citizens'] = $this->model('citizenModel')->selectAllcitizens();
+        if ($_SESSION['id_level']===1){
+            $data['title'] = 'Citizens';
+            $data['citizens'] = $this->model('citizenModel')->selectAllcitizens();
 
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('admin/pages/citizens', $data);
-        $this->view('templates/footer', $data);
+            $this->view('templates/header', $data);
+            $this->view('templates/sidebar', $data);
+            $this->view('admin/pages/citizens', $data);
+            $this->view('templates/footer', $data);
+        }
+
     }
 
     public function store()

@@ -8,7 +8,7 @@ class Auth extends Controller{
             redirect('dashboard/index');
         }
         if(isset($_SESSION['id_citizen']) && $_GET['url'] != 'login/logout'){
-            redirect('dashboard/citizen');
+            redirect('dashboard/index');
         }
     }
     public function index()
@@ -40,8 +40,8 @@ class Auth extends Controller{
         }
         if (password_verify($_POST['password'], $data['password']) && isset($data['id_citizen'])){
             $this->createCitizenSession($data);
-            redirect('dashboard/citizen');
-        }
+            redirect('dashboard/index');
+        } redirect('auth/');
     }
 
     public function login()
@@ -54,6 +54,13 @@ class Auth extends Controller{
         if ($citizen){
             $this->verifyPassword($citizen);
         }
+    }
+
+    public function logout()
+    {
+        $_SESSION = [];
+        session_destroy();
+        redirect('auth/');
     }
 
 //    public function store()
