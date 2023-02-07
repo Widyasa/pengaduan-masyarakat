@@ -36,8 +36,9 @@ class criticModel
     }
     public function countCriticsById()
     {
-            $query = "SELECT * FROM db_pengaduan_masyarakat.{$this->tablecritics} where `id_critics`= '" . $_SESSION['id_citizen'] . "'";
+            $query = "SELECT * FROM db_pengaduan_masyarakat.{$this->tablecritics} where `id_citizen` = :id_citizen";
             $this->db->query($query);
+            $this->db->bind('id_citizen', $_SESSION['id_citizen']);
             $this->db->execute();
             return $this->db->resultAll();
 

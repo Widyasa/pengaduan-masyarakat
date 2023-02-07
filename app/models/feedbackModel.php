@@ -41,7 +41,7 @@ class feedbackModel{
     }
     public function countFeedbackById()
     {
-        $query = "SELECT * FROM {$this->tablefeedback} WHERE `id_feedback` = '".$_SESSION['id_citizen']."'";
+        $query = "SELECT * FROM {$this->tbcritics} WHERE {$this->tbcritics}.status = '1' AND {$this->tbcritics}.id_citizen = '".$_SESSION['id_citizen']."'";
         $this->db->query($query);
         $this->db->execute();
         return $this->db->resultAll();
