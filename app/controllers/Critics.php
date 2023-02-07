@@ -37,11 +37,30 @@ class  Critics extends Controller
 
     public function storeCritic()
     {
-
-
             if ($this->model('criticModel')->addCritic($_POST)){
                 redirect('critics');
             }redirect('critics');
+    }
+
+    public function edit()
+    {
+    
+        if(isset($_SESSION['id_citizen'])){
+            if($this->model('criticModel')->editCritic($_POST)){
+                redirect('critics');
+            }
+            redirect('critics');
+        }
+    }
+    public function delete()
+    {
+    
+        if(isset($_SESSION['id_citizen'])){
+            if($this->model('criticModel')->deleteCritic($_POST['id_critics'])){
+                redirect('critics');
+            }
+            redirect('critics');
+        }
     }
 
 }

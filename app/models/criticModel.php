@@ -124,6 +124,22 @@ class criticModel
         $this->db->execute();
         return $this->db->rowCount();
     }
+    
+    public function editCritic($data)
+    {
+        $this->db->query("UPDATE {$this->tablecritics} SET `critic`=:critic , `status`='0'  WHERE `id_critics`=:id_critics");
+        $this->db->bind('id_critics', $data['id_critics']);
+        $this->db->bind('critic', $data['critic']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function deleteCritic($id){
+        $this->db->query("DELETE FROM {$this->tablecritics} WHERE `id_critics` = :id_critics AND status='0' ");
+        $this->db->bind('id_critics', $id);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 
     public function updateStatusCritic($id)
     {

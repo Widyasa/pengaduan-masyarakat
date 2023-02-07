@@ -74,10 +74,10 @@
                                         <button type="button"  class="btn btn-warning edit-modal" href="#" data-bs-toggle="modal" data-bs-target="#editModal<?=$critic['id_critics']?>">
                                             edit
                                         </button>
-                                        <form action="<?=BASEURL?>citizens/delete/<?= $critic['id_critics'] ?>" method="post">
-                                            <input type="hidden" name="citizen_id" value="<?=$critic['id_critics']?>">
+                                        <form action="<?=BASEURL?>critics/delete/<?= $critic['id_critics'] ?>" method="post">
+                                            <input type="hidden" name="id_critics" value="<?=$critic['id_critics']?>">
                                             <button type="submit" class="btn btn-danger ml-3" onclick="return confirm('yakin mau hapus?')">
-                                                Hapus
+                                                Delete
                                             </button>
                                         </form>
                                     </td>
@@ -131,20 +131,47 @@
                     <input type="hidden" name="id_critics" id="id_critics">
                     <div class="row gy-4 pt-4">
                         <div class="pt-3 col-12 input-modal w-100">
-                            <label>Feedback</label>
+                            <label>Critics</label>
                             <div class="input-text-wrapper w-100 mt-2">
-                                <textarea type="text" name="critic" class="w-100 input-text-wrapper border-0" placeholder="Input Feedback" ></textarea>
+                                <textarea type="text" name="critic" class="w-100 input-text-wrapper border-0" placeholder="Input critic" ></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex flex-row justify-content-center gap-3 pt-4">
-                        <button type="reset" class="btn btn-modal-close" data-bs-dismiss="modal">Cancel Save</button>
-                        <button type="submit" class="btn btn-modal-enter">Give Feedback </button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </button>
+                        <button type="reset" class="btn btn-modal-close" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-modal-enter">Send Critics</button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<?php foreach ($data['critics'] as $critic) :?>
+    <div class="modal fade" id="editModal<?=$critic['id_critics']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-body p-5">
+                    <p class="fs-3 text-center">Edit Critics</p>
+                    <form action="<?=BASEURL?>critics/edit" method="post">
+                        <div class="row gy-4 pt-4">
+                            <input type="hidden" value="<?=$critic['id_critics']?>" name="id_critics">
+                            <div class="pt-3 input-modal w-100">
+                                <label>Critics</label>
+                                <div class="input-text-wrapper w-100 mt-2">
+                                    <textarea type="text" name="critic" class="w-100 input-text-wrapper border-0"><?=$critic['critic']?></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-center gap-3 pt-4">
+                            <button type="reset" class="btn btn-modal-close" data-bs-dismiss="modal">Cancel Save</button>
+                            <button type="submit" class="btn btn-modal-enter">Edit Critic </button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
 
 
