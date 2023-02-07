@@ -127,7 +127,7 @@ class criticModel
     
     public function editCritic($data)
     {
-        $this->db->query("UPDATE {$this->tablecritics} SET `critic`=:critic , `status`='0'  WHERE `id_critics`=:id_critics");
+        $this->db->query("UPDATE {$this->tablecritics} INNER JOIN {$this->tablefeedback} ON {$this->tablefeedback}.id_critics = {$this->tablecritics}.id_critics SET {$this->tablecritics}.critic=:critic, {$this->tablefeedback}.status= '0'  WHERE {$this->tablecritics}.id_critics=:id_critics");
         $this->db->bind('id_critics', $data['id_critics']);
         $this->db->bind('critic', $data['critic']);
         $this->db->execute();

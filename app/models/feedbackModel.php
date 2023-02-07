@@ -105,7 +105,7 @@ class feedbackModel{
     public function editStatusFeedback($id)
     {
         $query = "UPDATE {$this->tbcritics} INNER JOIN {$this->tablefeedback}
-                   ON {$this->tablefeedback}.status = {$this->tbcritics}.status SET {$this->tbcritics}.status='0' WHERE {$this->tablefeedback}.id_feedback=:id_feedback ";
+                   ON {$this->tablefeedback}.status = {$this->tbcritics}.status SET {$this->tbcritics}.status='0', {$this->tablefeedback}.status='0' WHERE {$this->tablefeedback}.id_feedback=:id_feedback ";
         $this->db->query($query);
         $this->db->bind('id_feedback',$id);
         $this->db->execute();
